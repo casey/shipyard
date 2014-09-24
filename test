@@ -1,0 +1,43 @@
+#!/usr/bin/env python3.3
+
+import sys, time, uuid, requests, string, random
+
+endpoint = sys.argv[1]
+
+ENDC  = '\033[0m'
+RED   = '\033[31m'
+GREEN = '\033[32m'
+
+def test(msg=''):
+  msg = msg[0:15]
+  sys.stdout.write("%s " % msg.ljust(15, '.'))
+
+def fail(msg):
+  sys.stdout.write("%sFAIL%s: %s\n" % (RED, ENDC, msg))
+  sys.exit(1)
+
+def okay(msg):
+  if msg:
+    sys.stdout.write("%sOKAY%s: %s\n" % (GREEN, ENDC, msg))
+  else:
+    sys.stdout.write("%sOKAY%s\n" % (GREEN, ENDC))
+
+def request(method, path, expected_status, expected_text):
+  test('%s %s' % (method.ljust(10), expected_status))
+  r = requests.request(method, '%s/%s' % (endpoint, path))
+  r.status_code == expected_status or fail('%s - %s' % (r.status_code, r.text.strip()))
+  r.text == expected_text or fail('%s - %s' % (r.status_code, r.text.strip()))
+  okay('%s - %s' % (r.status_code, r.text.strip()))
+  return r.text
+
+def token(length):
+  return ''.join(random.choice(string.digits + string.ascii_letters) for _ in range(length))
+
+def path():
+  return token(random.randint(0, 50))
+
+def method():
+  return random.choice('OPTIONS GET POST PUT DELETE TRACE'.split())
+
+for _ in range(10):
+  request(method(), path(), 200, 'Hi!\n')
