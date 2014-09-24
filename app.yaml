@@ -5,10 +5,6 @@ api_version: go1
 default_expiration: "0d 0m"
 
 handlers:
-- url: /$
-  static_files: src/index.html
-  upload: src/index.html
-
 - url: /[0-9a-f]{16-64}/src/(.*)
   static_files: src/\1
   upload: src/.*
