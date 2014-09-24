@@ -34,7 +34,7 @@ def token(length):
   return ''.join(random.choice(string.digits + string.ascii_letters) for _ in range(length))
 
 def path():
-  return token(random.randint(0, 50))
+  return token(random.randint(1, 50))
 
 def method():
   return random.choice('OPTIONS GET POST PUT DELETE TRACE'.split())
