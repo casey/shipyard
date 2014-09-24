@@ -1,7 +1,7 @@
 shipyard
 ========
 
-Skeleton for flotilla apps.
+Skeleton for flotilla services
 
 [Test instance here.](http://rodarmor-shipyard.appspot.com)
 
