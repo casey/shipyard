@@ -1,7 +1,14 @@
 serve:
 	goapp serve .
 
-deploy:
+clean:
+	rm -rf build/*
+
+build: clean
+	cat lib/*.js src/*.js > build/build.js
+	cat src/*.css > build/build.css
+
+deploy: build
 	appcfg.py --oauth2 update .
 
 format:
@@ -16,4 +23,4 @@ test:
 	./test http://localhost:8080
 
 test-deployed:
-	./test http://rodarmor-shipyard.appspot.com
+	./test http://rodarmor-collage.appspot.com

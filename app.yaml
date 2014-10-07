@@ -1,4 +1,4 @@
-application: rodarmor-shipyard
+application: rodarmor-collage
 version: 1
 runtime: go
 api_version: go1
@@ -13,6 +13,10 @@ handlers:
 - url: /src/(.*)
   static_files: src/\1
   upload: src/.*
+
+- url: /favicon.ico
+  static_files: src/favicon.ico
+  upload: src/favicon.ico
 
 - url: /.*
   script: _go_app
