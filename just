@@ -2,9 +2,10 @@ serve:
 	goapp serve .
 
 clean:
-	rm -rf build/*
+	rm -rf build
 
 build: clean
+	mkdir build
 	cat lib/*.js src/*.js > build/build.js
 	cat src/*.css > build/build.css
 
