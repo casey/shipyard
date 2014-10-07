@@ -5,14 +5,15 @@ api_version: go1
 default_expiration: "0d 0m"
 
 handlers:
-- url: /[0-9a-f]{16-64}/src/(.*)
-  static_files: src/\1
-  upload: src/.*
-  expiration: "365d 0m"
+- url: /(src|lib|build)/(.*)
+  static_files: \1/\2
+  upload: (src|lib|build)/.*
+  application_readable: true
 
-- url: /src/(.*)
-  static_files: src/\1
-  upload: src/.*
+- url: /[0-9a-f]{16,64}/(src|lib|build)/(.*)
+  static_files: \1/\2
+  upload: (src|lib|build)/.*
+  expiration: "365d 0m"
 
 - url: /favicon.ico
   static_files: src/favicon.ico
