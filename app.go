@@ -5,10 +5,10 @@ import "appengine"
 import . "flotilla"
 
 var data = struct {
-  Styles  []string
-  Scripts []string
+  Styles   []string
+  Scripts  []string
 } {
-  Styles: []string{"build/build.css"},
+  Styles:  []string{"build/build.css"},
   Scripts: []string{"build/build.js"},
 }
 

@@ -2,8 +2,8 @@
 
 angular.module('app')
 
-.controller("main", function ($scope, $element) {
-  $element.find('noscript').remove();
+.controller("preview", function ($scope, $element) {
+  // initialize a 2d context
   // create and add canvas element
 
   // get all drag and dropped images

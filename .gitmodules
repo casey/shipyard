@@ -1,3 +1,6 @@
 [submodule "flotilla"]
 	path = flotilla
 	url = git@github.com:casey/flotilla.git
+[submodule ".sub/ct"]
+	path = ct
+	url = git@github.com:casey/ct.git
