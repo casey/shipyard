@@ -2,12 +2,12 @@
 
 angular.module('app')
 
+.constant('CT', CT)
+
 .controller("main", function ($scope, $element, CT) {
   $scope.images = [];
 
   var ct = CT($element);
-
-  ct.fillStyle("#ffffaa").fillRect(0, 0, 500, 300);
 
   $element.bind('dragover', function (e) {
     e.preventDefault();
@@ -29,15 +29,34 @@ angular.module('app')
       }
     }
   });
-
+ 
   $scope.$watchCollection('images', function (images) {
+    var w = 0;
+    var h = 0;
+
     for (var i = 0; i < images.length; i++) {
       var image = images[i];
-      console.log(image);
-      ct.drawImage(image, 0, 0);
+      w += image.naturalWidth;
+      var h = Math.max(h, image.naturalHeight);
+    }
+    
+    console.log(w, h);
+    ct.width(w).height(h);
+
+    $scope.height = '' + 100 * (h / w) + '%';
+
+    console.log($scope.height);
+    
+    ct.fillStyle("#000000").fillRect(0, 0, w, h);
+
+    var x = 0;
+    for (var i = 0; i < images.length; i++) {
+      var image = images[i];
+      var y = h / 2 - image.naturalHeight / 2;
+      ct.drawImage(image, x, y);
+      x += image.naturalWidth;
     }
   }); 
-
 })
 
 ;

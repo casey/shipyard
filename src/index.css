@@ -10,6 +10,10 @@ html, body, body > * {
   position: absolute;
 }
 
+canvas {
+  width: 100%;
+}
+
 noscript {
   background: red;
 }
