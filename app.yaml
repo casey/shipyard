@@ -10,9 +10,10 @@ handlers:
   upload: (src|lib|build)/.*
   application_readable: true
 
-- url: /[0-9a-f]{16,64}/(src|lib|build)/(.*)
+- url: /[0-9a-f]{10,64}/(src|lib|build)/(.*)
   static_files: \1/\2
   upload: (src|lib|build)/.*
+  application_readable: true
   expiration: "365d 0m"
 
 - url: /favicon.ico
