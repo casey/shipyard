@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="app">
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Collage</title>
-    <meta name="description" content="A drag and drop image collage maker">
+    <title>Shipyard</title>
+    <meta name="description" content="A skeleton for flotilla apps and services">
     <base href="/">
     {{range FileURLs .Styles}}<link href="{{.}}" rel="stylesheet" type="text/css">
     {{end}}
@@ -11,7 +11,10 @@
     {{end}}
   </head>
   <body>
-    <canvas ng-controller="main" ng-style="{height: height}"></canvas>
-    <noscript><a href="http://www.enable-javascript.com/" target="_blank">Please enable JavaScript</a>.</noscript>
+    <tt>
+      <a href="http://github.com/casey/shipyard">shipyard</a>
+      for the
+      <a href="http://github.com/casey/flotilla">flotilla</a>
+    </tt>
   </body>
 </html>
