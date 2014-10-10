@@ -1,21 +1,29 @@
 package app
 
 import "net/http"
+import "appengine"
 import . "flotilla"
 
-var html = `<tt>
-  <a href="https://github.com/casey/shipyard">shipyard</a> for the
-  <a href="https://github.com/casey/flotilla">flotilla</a>
-</tt>`
+var data = struct {
+  Styles   []string
+  Scripts  []string
+} {
+  Styles:  []string{"build/build.css"},
+  Scripts: []string{"build/build.js"},
+}
 
 func init() {
-  Handle("/").Index(index).Default(handler)
+  if appengine.IsDevAppServer() {
+    data.Styles  = []string{"lib/*.css", "src/*.css"}
+    data.Scripts = []string{"lib/*.js",  "src/*.js"}
+  }
+  Handle("/").Index(index).Get(get).Options(OK)
 }
 
 func index(r *http.Request) {
-  Body(http.StatusOK, html, "text/html; charset=utf-8")
+  Template(StatusOK, "src/index.html", data)
 }
 
-func handler(r *http.Request) {
-  Body(http.StatusOK, "Hi!\n", "text/plain; charset=utf-8")
+func get(r *http.Request) {
+  Status(StatusNotFound)
 }

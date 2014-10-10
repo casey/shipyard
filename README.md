@@ -1,17 +1,6 @@
-shipyard
-========
+collage
+=======
 
-Skeleton for flotilla services
+Intended to allow for easily creating collages of satellite imagery, like the one [here](http://i.imgur.com/gEYfTSP), but it's currently unfinished because Crome doesn't deal with downloading large images well.
 
-[Test instance here.](http://rodarmor-shipyard.appspot.com)
-
-
-API
----
-
-All requests return 200 OK.
-
-```
-> curl -X GET http://rodarmor-shipyard.appspot.com/hello
-Hi!
-```
+[Running here.](http://rodarmor-collage.appspot.com)
