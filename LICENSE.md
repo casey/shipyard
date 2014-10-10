@@ -1,4 +1,4 @@
-"This" means everything in the repository at github.com/casey/collage by Casey Rodarmor.
+"This" means everything in the repository at github.com/casey/shipyard by Casey Rodarmor.
 
 Anyone may do anything with this.
 
